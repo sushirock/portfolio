@@ -1,0 +1,383 @@
+@charset "UTH-8";
+
+html{
+    font-size: 100%;
+}
+
+body{
+    background-color: #eaeaea;
+    margin: 0;
+    color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+
+}
+
+img{
+    width: 100%;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+.wrapper{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+// ヘッダー
+
+header{
+    background: rgb(72, 245, 101);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+
+    #header-flex{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ul{
+            display: flex;
+
+            li{
+                padding-right: 30px;
+
+                a{
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+
+            }
+
+            li:hover{
+                opacity: 0.7;
+            }
+        }
+
+        #contact{
+            background: rgb(6, 235, 177);
+
+            }
+
+            #contact:hover{
+                opacity: 0.7;
+            }
+
+            a{
+                padding: 5px 5px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+
+        
+            
+        }
+    }
+
+
+// メイン
+
+#mainvisual{
+    height: calc(100vh - 56px);
+    background-image: url(water.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 50px;
+
+    h1{
+        position: absolute;
+        top: 250px;
+        left: 400px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 5rem;
+        font-weight: normal;
+    }
+}
+
+// テキストの出現
+
+.glowAnime span{opacity: 0;}
+
+/*アニメーションで透過を0から1に変化させtext-shadowをつける*/
+.glowAnime.glow span{ animation:glow_anime_on 1s ease-out forwards; }
+
+@keyframes glow_anime_on{
+	0% { opacity:0; text-shadow: 0 0 0 #fff,0 0 0 #fff;}
+	50% { opacity:1;text-shadow: 0 0 10px #fff,0 0 15px #fff; }
+	100% { opacity:1; text-shadow: 0 0 0 #fff,0 0 0 #fff;}
+}
+
+
+// ローディング
+
+
+/* Loading背景画面設定　*/
+#splash {
+    /*fixedで全面に固定*/
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	text-align:center;
+	color:#fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    z-index: 999;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	width: 100%;
+}
+
+/*割れる画面のアニメーション*/
+.loader_cover {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(5, 209, 5);
+    transition: all .2s cubic-bezier(.04, .435, .315, .9);
+    transform: scaleY(1);
+}
+/*上の画面*/
+.loader_cover-up {
+    transform-origin: center top;
+}
+
+/*下の画面*/
+.loader_cover-down {
+    position: absolute;
+    bottom: 0;
+    transform-origin: center bottom;
+}
+/*クラス名がついたらY軸方向に0*/
+.coveranime {
+    transform: scaleY(0);
+}
+
+
+// 波線効果
+
+
+/*=== 9-1-4 矢印が動いてスクロールを促す  ====*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown4{
+    /*描画位置※位置は適宜調整してください*/
+	position:absolute;
+	bottom:1%;
+	right:50%;
+    /*矢印の動き1秒かけて永遠にループ*/
+	animation: arrowmove 1s ease-in-out infinite;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+ }
+
+/*Scrollテキストの描写*/
+.scrolldown4 span{
+    /*描画位置*/
+	position: absolute;
+	left:-20px;
+	bottom:10px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	/*縦書き設定*/
+	-ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    /*矢印の形状*/
+    width: 1px;
+    height: 20px;
+    background: #eee;
+    transform: skewX(-31deg);
+}
+
+.scrolldown4:after{
+	content:"";
+    /*描画位置*/
+	position: absolute;
+	bottom:0;
+	right:0;
+    /*矢印の形状*/
+	width:1px;
+	height: 50px;
+	background:#eee;
+    
+}
+
+
+.wave{
+    position:relative;
+    height:200px;/*何も表示されない場合は各波の親要素に高さを持たせましょう。*/
+    }
+    canvas{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    }
+
+
+
+
+// アバウトミー
+
+#aboutme{
+
+    padding: 100px 50px;
+    margin-top: 50px;
+
+    background: #fff;
+
+    position: absolute;
+    top: -200px;
+
+
+
+    h1{
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: normal;
+    }
+
+    #aboutme-flex{
+        display: flex;
+
+        #aboutme-image{
+            width: 50%;
+        }
+
+        .effect-fade{
+            opacity:0;
+            transform: translate(0,45px);
+            transition: all 500ms;
+        }
+
+        .effect-fade.effect-scroll{
+            opacity: 1;
+            transform: translate(0,0);
+        }
+        
+      
+
+    }
+}
+#back1{
+    height: 300px;
+    background-image: url(avenue.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    margin-top: 200px;
+}
+
+// スキル
+
+#skill{
+    background: #fff;
+    padding: 100px 50px;
+    margin-top: 50px;
+    position: absolute;
+    top: -200px;
+    right: 0;
+    
+    h1{
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: normal;
+        padding-bottom: 50px;
+    }
+
+    #skill-flex{
+        display: flex;
+    }
+}
+
+#back2{
+    height: 500px;
+    background-image: url(ocean.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    margin-top: 200px;
+}
+
+.effect-fade{
+    opacity:0;
+    transform: translate(0,45px);
+    transition: all 500ms;
+}
+
+.effect-fade.effect-scroll{
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+
+
+
+// ワークス
+
+#works{
+
+    background: #fff;
+    padding: 100px 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    h1{
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: normal;
+        padding-bottom: 50px;
+    }
+
+    #works-flex{
+        display: flex;
+    }
+}
+
+// フッター
+
+footer{
+    background:rgb(72, 245, 101) ;
+    height: 30px;
+    line-height: 30px;
+
+    small{
+        display: block;
+        text-align: center;
+    }
+}
